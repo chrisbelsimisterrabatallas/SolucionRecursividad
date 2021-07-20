@@ -58,6 +58,7 @@ int sumaprimosrecursivo(int limite, int n)
 }
 
 void adivinaElNumero(int oportunidades) {
+    srand(time(NULL));
     //Numeros aleatorios entre 0 y 50:
     int num=1 + (rand()%51);
     //int num = 15;
@@ -68,24 +69,24 @@ void adivinaElNumero(int oportunidades) {
     int i = 1;
     while (i <= oportunidades && adivinaste == false) {
         cout << endl << "OPORTUNIDAD #: " << i;
-        cout << endl << "Ingresa tu NUMERO: ";
+        cout << endl << "INGRESA TU NUMERO: ";
         cin >> n;
 
-        {
             if (n > num)
                 cout << endl << "Debes ingresar un NUMERO mas bajo... ";
             else if (n < num)
                 cout << endl << "Debes ingresar un NUMERO mas alto.. ";
-            else
+            else{
                 cout << endl << "FELICIDADES, GANASTE UN PASAJE A GALAPAGOS.. ";
             adivinaste = true;
+
         }
         i++;
     }
     if (adivinaste)
         cout << endl << "ERES EL CAMPEON ";
     else
-        cout << endl << "Vuelve a intentar ";
+        cout << endl << "PERDISTE VUELVE HA INTENTARLO...";
 }
 
 //El juego de dados:
@@ -140,9 +141,9 @@ void juegodeDados (int oportunidades) {
         i++;
     }
     if (lanzar)
-        cout << endl << "ERES EL MEJOR ";
+        cout << endl << "ERES EL MEJOR... ";
     else
-        cout << endl << "Vuelve a intentar ";
+        cout << endl << " PERDISTE VUELVE HA INTENTARLO... ";
 }
 
 int main() {
@@ -163,7 +164,7 @@ else
 
     srand(time(NULL));
     int opcion;
-    int salir;
+    bool salir=false;
     //Numeros aleatorios entre 0 y 50:
     num=rand()%51;
     cout<<endl<<"Aleatorios: "<<num;
@@ -177,7 +178,8 @@ else
             case 1:
                 adivinaElNumero(5);
                 break;
-            case 2:;
+            case 2:
+                salir=true;
                 break;
             default:
                 cout<<endl<<"OPCION NO VALIDA ";
